@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+
+    </h:head>
+    <h:body>
+        <ui:composition template="WEB-INF/myTemplate.xhtml">
+            <ui:define name="top">
+                <center>                 
+                    <br />
+                    <img src="img/bannercurba.jpg"></img>  
+                    <br />
+                </center>
+
+                <h:form style="width: 300px;  color: #D20005; margin-top: 0px; margin-left: 150px  "  title="item" >
+                    <br></br>
+                   
+                     <p:commandButton  action="index.xhtml" value="Principal"></p:commandButton>
+                     <p:commandButton  action="Gestion.xhtml" value="Gestion"></p:commandButton>
+                </h:form>
+            </ui:define>
+
+            <ui:define name="content">
+                <center>
+                    <h2 style="color: #38b4ac; margin: 3% 0 5% 0; font-family: crushed; font-size: 20px;">REPORTES</h2>
+                </center>
+                <center>
+                    <br />
+
+
+                    <h:form id="frm" style="width: 900px; height: 300px; appearance: window; ">
+                        <p:growl id="ger"/>
+
+                        <p:dataTable id="data" value="#{registroBean.registros}"  var="Registro"  style="width: 900px; margin-top: 30px; " rows="6"
+                                     paginator="true"
+                                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                     rowsPerPageTemplate="5,10,100">
+
+                            <p:column headerText="Cedula" filterBy="#{Registro.cedula}"  filterMatchMode="exact">
+                                <p:outputLabel value="#{Registro.cedula}"/>
+                            </p:column>
+
+                            <p:column headerText="Hora" filterBy="#{Registro.hora}" filterMatchMode="exact">
+                                <p:outputLabel value="#{Registro.hora}"/>
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+                </center>                
+            </ui:define>
+            <ui:define name ="bottom">
+                <h:link value="Principal" outcome="index" />
+                               
+            </ui:define>            
+        </ui:composition>
+    </h:body>
+</html>
+
+

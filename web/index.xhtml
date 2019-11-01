@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="WEB-INF/myTemplate.xhtml">
+           
+            
+            <ui:define name="content">
+                <br />
+                <br />
+                <br />
+                 <br />
+                <br />
+                <br />
+                <center> 
+                    <p:growl id="growl" life="2000" />
+                    <h:form id="loginForm" style="margin-left: 1px">          
+                        <p:panel header="" style="width: 390px;background-color: #38b4ac;  ">
+                            <h:panelGrid id="loginPanel" columns="2">
+                                <h:outputText value="Usuario:" style="color: white" />
+                                <p:inputText id="username" value="#{login.user}" ></p:inputText>
+                                <p:spacer></p:spacer>
+                                <p:message for="username" ></p:message>
+                                <h:outputText value="Contraseña:" style="color: white" />
+                                <p:password id="password" value="#{login.pwd}"  feedback="false" />    
+                                <p:spacer></p:spacer>
+                                <p:message for="password"></p:message>
+                                <p:spacer></p:spacer>
+                                <p:commandButton action="#{login.validateUsernamePassword()}" process="@form" value="Ingresar" update=":growl" ajax="true" >             
+                                </p:commandButton>                                
+                                <h:link value="Administracion" outcome="Administracion" />
+                            </h:panelGrid>
+                        </p:panel>
+                    </h:form>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                 <div id="bottom">
+                            <ui:insert name="bottom"><center>
+                                    <p style="color:#FFFFFF">Para soporte comuniquese con Sistemas.</p>
+                                    <p style="color:#FFFFFF">2019</p>
+                                </center>  </ui:insert>
+                        </div>
+                </center>
+            </ui:define>
+        </ui:composition>          
+    </h:body>
+</html>
+
